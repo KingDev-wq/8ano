@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação 8º Ano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .menu a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background: #ff5733;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background: #c70039;
+        }
+
+        .conteudo {
+            display: none;
+        }
+
+        .ativo {
+            display: block;
+        }
+
+        .falling-image {
+            position: absolute;
+            width: 50px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bem-vindo ao site do 8º Ano!</h1>
+    <p>Escolha uma matéria:</p>
+
+    <div class="menu">
+        <a href="#" onclick="mostrarConteudo('matematica')">Matemática</a>
+        <a href="#" onclick="mostrarConteudo('portugues')">Português</a>
+        <a href="#" onclick="mostrarConteudo('historia')">História</a>
+        <a href="#" onclick="mostrarConteudo('ciencias')">Ciências</a>
+        <a href="#" onclick="mostrarConteudo('geografia')">Geografia</a>
+    </div>
+
+    <div id="matematica" class="conteudo">
+        <h2>Matemática</h2>
+        <p>Aqui você aprenderá sobre frações, equações e geometria.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="portugues" class="conteudo">
+        <h2>Português</h2>
+        <p>Aprenda sobre gramática, interpretação de texto e literatura.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="historia" class="conteudo">
+        <h2>História</h2>
+        <p>Descubra os eventos históricos mais importantes do mundo.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="ciencias" class="conteudo">
+        <h2>Ciências</h2>
+        <p>Explore os segredos da física, química e biologia.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="geografia" class="conteudo">
+        <h2>Geografia</h2>
+        <p>Aprenda sobre países, climas e fenômenos naturais.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function mostrarConteudo(id) {
+            document.querySelectorAll('.conteudo').forEach(div => div.classList.remove('ativo'));
+            document.getElementById(id).classList.add('ativo');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            function createFallingImage() {
+                const img = document.createElement("img");
+                img.src = "imagem.png"; // Substitua pelo nome real da sua imagem
+                img.classList.add("falling-image");
+                img.style.left = Math.random() * window.innerWidth + "px";
+                img.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(img);
+
+                setTimeout(() => img.remove(), 5000);
+            }
+
+            setInterval(createFallingImage, 500);
+        });
+    </script>
+
+</body>
+</html>
